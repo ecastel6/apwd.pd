@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -11,15 +13,24 @@
 	<name>${project.groupId}.${project.artifactId}</name>
 
 	<properties>
+		<!-- A las propiedades se accede mediante ${...}, Ej. ${log4j.version} -->
+		<!-- Java -->
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
-		<junit.version>4.11</junit.version>
-		<log4j.version>2.2</log4j.version>
+		<!-- Maven -->
 		<maven.compiler.version>3.3</maven.compiler.version>
-		<maven.failsafe.version>2.12</maven.failsafe.version>
+		<!-- Maven. Test de Integración -->
+		<maven.failsafe.version>2.19.1</maven.failsafe.version>
+		<!-- Pruebas -->
+		<junit.version>4.11</junit.version>
+		<!-- Logs -->
+		<log4j.version>2.3</log4j.version>
+		<!-- Data Base -->
+		<database.driver>com.mysql.jdbc.Driver</database.driver>
+		<database.url>jdbc:mysql://localhost:3306/eco</database.url>
 	</properties>
 
 	<profiles>
@@ -35,6 +46,8 @@
 			</activation>
 			<properties>
 				<logs.level.root>debug</logs.level.root>
+				<database.user>root</database.user>
+				<database.password></database.password>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=preproduction -->
@@ -48,6 +61,8 @@
 			</activation>
 			<properties>
 				<logs.level.root>info</logs.level.root>
+				<database.user>myUser</database.user>
+				<database.password>myPass</database.password>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=production -->
@@ -61,6 +76,8 @@
 			</activation>
 			<properties>
 				<logs.level.root>error</logs.level.root>
+				<database.user>otherUser</database.user>
+				<database.password>otherPass</database.password>
 			</properties>
 		</profile>
 	</profiles>
@@ -91,6 +108,7 @@
 	</dependencies>
 	<build>
 		<resources>
+			<!-- Es para que cambie los valores de los ficheros de propiedades -->
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
@@ -138,4 +156,18 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<developers>
+		<developer>
+			<name>Nombre y Apellidos</name>
+			<id>***</id>
+			<email>***@alumnos.upm.es</email>
+			<organization>MIW UPM</organization>
+			<roles>
+				<role>Architect</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+
 </project>
