@@ -6,8 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    PointTest.class, 
-    //DecimalCollectionTest.class,
+    PointTest.class, DecimalCollectionTest.class,
     //FractionTest.class,
     //UserTest.class
 })
