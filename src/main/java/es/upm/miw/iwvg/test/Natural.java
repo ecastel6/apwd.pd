@@ -3,7 +3,7 @@ package es.upm.miw.iwvg.test;
 import org.apache.logging.log4j.LogManager;
 
 public class Natural {
-
+ 
     private int value;
 
     public Natural(int value) {
