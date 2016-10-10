@@ -170,4 +170,8 @@
 		</developer>
 	</developers>
 
+	<organization>
+		<name>MIW UPM</name>
+		<url>miw.etsisi.upm.es</url>
+	</organization>
 </project>
