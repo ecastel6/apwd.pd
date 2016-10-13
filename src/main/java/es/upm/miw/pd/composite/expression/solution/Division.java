@@ -4,13 +4,15 @@ public class Division extends CompositeOperacion {
 
     public Division(Expresion leftExpresion, Expresion rightExpresion) {
         super(leftExpresion, rightExpresion);
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     public int operar() {
-        // TODO Auto-generated method stub
-        return 0;
+        return leftOperand.operar() / rightOperand.operar();
     }
 
+    @Override
+    public String toString() {
+        return "(" + leftOperand.toString() + "/" + rightOperand.toString() + ")";
+    }
 }

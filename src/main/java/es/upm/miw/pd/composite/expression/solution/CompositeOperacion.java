@@ -17,9 +17,14 @@ public abstract class CompositeOperacion extends Expresion {
     public abstract int operar();
 
     @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public abstract String toString();
+
+//    public Expresion getLeftOperand() {
+//        return this.leftOperand;
+//    }
+//    
+//    public Expresion getRightOperand() {
+//        return this.rightOperand;
+//    }
 
 }
