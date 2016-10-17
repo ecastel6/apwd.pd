@@ -1,106 +1,70 @@
 package es.upm.miw.pd.state.connection.solution;
 
 public class Conexion {
-	private Estado estado;
+    private State state;
 
-	private Link link;
+    private Estado estado;
 
-	public Conexion(Link link) {
-		assert link != null;
-		this.link = link;
-		this.estado = Estado.CERRADO;
-	}
+    private Link link;
 
-	public Link getLink() {
-		return link;
-	}
+    public Conexion(Link link) {
+        assert link != null;
+        this.setLink(link);
+        this.setEstado(Estado.CERRADO);
+        this.setState(new Cerrado());
+    }
 
-	public Estado getEstado() {
-		return this.estado;
-	}
+    public Link getLink() {
+        return link;
+    }
 
-	public void abrir() {
-		if (this.estado == Estado.CERRADO) {
-			this.estado = Estado.PREPARADO;
-		} else if (this.estado == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PREPARADO) {
-		} else if (this.estado == Estado.ESPERANDO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else
-			assert false : "estado imposible";
-	}
+    public void setLink(Link link) {
+        this.link = link;
+    }
 
-	public void cerrar() {
-		if (this.estado == Estado.CERRADO) {
-		} else if (this.estado.equals(Estado.PARADO)) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PREPARADO) {
-			this.estado = Estado.CERRADO;
-		} else if (this.estado == Estado.ESPERANDO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else {
-			assert false : "estado imposible";
-		}
-	}
+    protected void setState(State state) {
+        this.state = state;
+    }
 
-	public void parar() {
-		if (this.estado.equals(Estado.CERRADO)) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PARADO) {
-		} else if (this.estado == Estado.PREPARADO) {
-			this.estado = Estado.PARADO;
-		} else if (this.estado == Estado.ESPERANDO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else {
-			assert false : "estado imposible";
-		}
-	}
+    protected State getState() {
+        return this.state;
+    }
 
-	public void iniciar() {
-		if (this.estado == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PARADO) {
-			this.estado = Estado.PREPARADO;
-		} else if (this.estado == Estado.PREPARADO) {
-		} else if (this.estado == Estado.ESPERANDO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else {
-			assert false : "estado imposible";
-		}
-	}
+    public Estado getEstado() {
+        return estado;
+    }
 
-	public void enviar(String msg) {
-		if (this.estado == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PREPARADO) {
-			this.link.enviar(msg);
-			this.estado = Estado.ESPERANDO;
-		} else if (this.estado == Estado.ESPERANDO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else {
-			assert false : "estado imposible";
-		}
-	}
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
 
-	public void recibir(int respuesta) {
-		if (this.estado == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.PREPARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (this.estado == Estado.ESPERANDO) {
-			if (respuesta == 0) {
-				this.estado = Estado.PREPARADO;
-			} else {
-				this.estado = Estado.CERRADO;
-			}
-		} else {
-			assert false : "estado imposible";
-		}
-	}
+    public void abrir() {
+        state.abrir(this);
+    }
+
+    public void cerrar() {
+        state.cerrar(this);
+    }
+
+    public void parar() {
+        state.parar(this);
+    }
+
+    public void iniciar() {
+        state.iniciar(this);
+    }
+
+    public void enviar(String msg) {
+        state.enviar(this, msg);
+    }
+
+    public void recibir(int respuesta) {
+        state.recibir(this, respuesta);
+    }
+
+    @Override
+    public String toString() {
+        return "Conexión[" + state.toString() + "]";
+    }
 
 }
