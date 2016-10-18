@@ -21,6 +21,14 @@ public class VisitorFigureMain {
 		}
 		System.out.println("Total Figures Area= " + visitorArea.getArea());
 	}
+	
+	public void VisitorSides () {
+        VisitorSides visitorSides = new VisitorSides();
+        for (Figure figure : coleccion) {
+            figure.accept(visitorSides);
+        }
+        System.out.println("Total Figures Sides= " + visitorSides.getTotalSides());
+    }
 
 	public static void main(String[] args) {
 		IO.getIO().addView(new VisitorFigureMain());

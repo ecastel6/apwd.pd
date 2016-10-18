@@ -1,45 +1,34 @@
 package es.upm.miw.pd.visitor.figure.solution;
 
 public class Triangle implements Figure {
+    private static final int TRIANGLESIDES = 3;
+
     private double base;
 
     private double height;
 
+    private int numSides;
+
     public Triangle(String description, double base, double height) {
-        this.setBase(base);
-        this.setHeight(height);
+        this.base = base;
+        this.height = height;
+        this.numSides = TRIANGLESIDES;
     }
 
-//    @Override
-//    public double area() {
-//        return base * height * 0.5;
-//    }
-//
-//    @Override
-//    public double numberOfSides() {
-//        return 3;
-//    }
+    public double getBase() {
+        return base;
+    }
 
-	@Override
-	public void accept(Visitor v) {
-		v.visitTriangle(this);
-		
-	}
+    public double getHeight() {
+        return height;
+    }
 
-	public double getBase() {
-		return base;
-	}
+    public int getNumSides() {
+        return this.numSides;
+    }
 
-	public void setBase(double base) {
-		this.base = base;
-	}
-
-	public double getHeight() {
-		return height;
-	}
-
-	public void setHeight(double height) {
-		this.height = height;
-	}
-
+    @Override
+    public void accept(Visitor v) {
+        v.visitTriangle(this);
+    }
 }

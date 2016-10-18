@@ -4,32 +4,23 @@ public class Circle implements Figure {
 
     private double radius;
 
+    private double numSides;
+
     public Circle(String description, double radius) {
-        this.setRadius(radius);
+        this.radius = radius;
+        this.numSides = Double.POSITIVE_INFINITY;
     }
 
-//    @Override
-//    public double area() {
-//        return Math.PI * radius * radius;
-//    }
+    public double getRadius() {
+        return radius;
+    }
 
-//    @Override
-//    public double numberOfSides() {
-//        return Double.POSITIVE_INFINITY;
-//    }
-//
-	@Override
-	public void accept(Visitor v) {
-		v.visitCircle(this);
-		
-	}
+    public double getNumSides() {
+        return numSides;
+    }
 
-	public double getRadius() {
-		return radius;
-	}
-
-	public void setRadius(double radius) {
-		this.radius = radius;
-	}
-
+    @Override
+    public void accept(Visitor v) {
+        v.visitCircle(this);
+    }
 }
