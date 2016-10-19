@@ -10,7 +10,7 @@ public class Texto extends Composite {
             this.getTextComponents().add(component);
         }
     }
-    
+
     @Override
     public void remove(Componente component) {
         if (!component.isComposite()) {
@@ -22,8 +22,7 @@ public class Texto extends Composite {
 
     @Override
     public String printEOL() {
-        // TODO Auto-generated method stub
-        return null;
+        return "---o---\n";
     }
 
 }

@@ -17,18 +17,14 @@ public abstract class Composite extends Componente {
     }
 
     @Override
-    public void add(Componente component) {
-
-    }
-
-    @Override
-    public void remove(Componente component) {
-
-    }
-
-    @Override
-    public String dibujar(boolean b) {
-        return null;
+    public String dibujar(boolean capitalize) {
+        String printedText="";
+        
+        for (Componente component: textComponents) {
+            printedText+=component.dibujar(capitalize);
+        }
+        printedText+=printEOL();
+        return printedText;
 
     }
 

@@ -20,6 +20,14 @@ public class FactoriaCaracter {
     }
 
     public Caracter get(char key) {
-        return mapCharacters.get(key);
+        if (mapCharacters.containsKey(key)) {
+            return mapCharacters.get(key);
+        }
+        else 
+        {
+            Caracter newCar = new Caracter(key);
+            mapCharacters.put(key,newCar);
+            return newCar;
+        }
     }
 }
