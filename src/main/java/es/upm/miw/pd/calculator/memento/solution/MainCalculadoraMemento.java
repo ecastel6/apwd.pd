@@ -10,31 +10,30 @@ import upm.jbb.IO;
 public final class MainCalculadoraMemento {
     private GestorMementos<Memento> gm;
 
-    private CommandManager commandManager; 
-	
+    private CommandManager commandManager;
+
+    private CalculadoraMementable calculator;
+
     private MainCalculadoraMemento() {
+        this.calculator = new CalculadoraMementable();
         this.gm = new GestorMementos<Memento>();
-        this.o = new CalculadoraMementable();
         this.commandManager = new CommandManager();
         this.commandManager.add(new AddCommand(calculator));
         this.commandManager.add(new SubtractCommand(calculator));
         this.commandManager.add(new ResetCommand(calculator));
         this.commandManager.add(new PrintCommand(calculator));
-        
-        IO.getIO().addView(this.o);
-        IO.getIO().addView(this);
+        this.commandManager.add(new SaveCommand(calculator, gm));
+        this.commandManager.add(new RestoreCommand(calculator, gm));
+
     }
 
-    public void createMemento() {
-        this.gm.addMemento(IO.getIO().readString("Nombre del Memento"), o.createMemento());
-    }
-
-    public void restoreMemento() {
-        this.o.restoreMemento(this.gm.getMemento((String) IO.getIO().select(gm.keys(), "Restaurar")));
+    public void execute() {
+        String key = (String) IO.getIO().select(this.commandManager.keys());
+        this.commandManager.execute(key);
     }
 
     public static void main(String[] args) {
-        new MainCalculadoraMemento();
+        IO.getIO().addView(new MainCalculadoraMemento());
     }
 
 }

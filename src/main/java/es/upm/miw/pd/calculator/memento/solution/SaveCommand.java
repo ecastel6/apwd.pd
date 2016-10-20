@@ -4,21 +4,19 @@ import upm.jbb.IO;
 
 public class SaveCommand extends MementoComando {
 
-	private CalculadoraMementable receptor;
-	
-	public SaveCommand(CalculadoraMementable calculator, GestorMementos<Memento> gestorMementos) {
-		super(calculator, gestorMementos);
-		this.receptor=calculator;
-	}
+    public SaveCommand(CalculadoraMementable calculatorMementable, GestorMementos<Memento> gestorMementos) {
+        super(calculatorMementable, gestorMementos);
+    }
 
-	@Override
-	public String name() {
-		return "Save memento";
-	}
+    @Override
+    public String name() {
+        return "Save memento";
+    }
 
-	@Override
-	public void execute() {
-		String nameMemento=IO.getIO().readString("Memento name: ");
-		receptor.createMemento(nameMemento);
-	}
+    @Override
+    public void execute() {
+        Memento memento = ((CalculadoraMementable) getCalculator()).createMemento();
+        String nameMemento = IO.getIO().readString("Memento name: ");
+        getGestorMementos().addMemento(nameMemento, memento);
+    }
 }

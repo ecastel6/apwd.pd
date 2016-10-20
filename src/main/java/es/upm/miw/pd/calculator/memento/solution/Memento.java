@@ -1,21 +1,13 @@
 package es.upm.miw.pd.calculator.memento.solution;
 
 public class Memento {
-    private int valor;
+    private int value;
 
-    private String cadena;
-
-    public Memento(int valor, String cadena) {
-        this.valor = valor;
-        this.cadena = cadena;
+    public Memento(int value) {
+        this.value = value;
     }
 
-    public int getValor() {
-        return this.valor;
+    public int getValue() {
+        return this.value;
     }
-
-    public String getCadena() {
-        return this.cadena;
-    }
-
 }

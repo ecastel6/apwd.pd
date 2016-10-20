@@ -1,13 +1,15 @@
 package es.upm.miw.pd.calculator.memento.solution;
 
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GestorMementos<T> {
-    private SortedMap<String, T> lista = new TreeMap<String, T>();
+    private int value;
+
+    private Map<String, T> lista = new HashMap<String, T>();
 
     public void addMemento(String key, T memento) {
-        this.lista.put(this.lista.size() + ":" + key, memento);
+        this.lista.put(this.value + ":" + key, memento);
     }
 
     public T getMemento(String key) {
