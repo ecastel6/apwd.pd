@@ -6,7 +6,7 @@ public class NaturalNumbersMain {
     public static void main(String[] args) {
         NumberCreator es = new NumberCreatorEs();
         NumberCreator en = new NumberCreatorEn();
-        
+
         manager.setCreator(es);
         manager.setNumber(0);
         System.out.println(manager.getNumber().getDescription());
@@ -14,11 +14,11 @@ public class NaturalNumbersMain {
         manager.setCreator(en);
         manager.setNumber(1);
         System.out.println(manager.getNumber().getDescription());
-        
+
         manager.setCreator(es);
         manager.setNumber(2);
         System.out.println(manager.getNumber().getDescription());
-        
+
     }
 
 }
