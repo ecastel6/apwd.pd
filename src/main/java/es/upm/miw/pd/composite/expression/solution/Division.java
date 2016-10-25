@@ -11,8 +11,7 @@ public class Division extends CompositeOperacion {
         return leftOperand.operar() / rightOperand.operar();
     }
 
-    @Override
-    public String toString() {
-        return "(" + leftOperand.toString() + "/" + rightOperand.toString() + ")";
+    public char operador() {
+        return '/';
     }
 }

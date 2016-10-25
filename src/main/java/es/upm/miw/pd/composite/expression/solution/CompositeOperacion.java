@@ -16,15 +16,10 @@ public abstract class CompositeOperacion extends Expresion {
     @Override
     public abstract int operar();
 
+    public abstract char operador();
+
     @Override
-    public abstract String toString();
-
-//    public Expresion getLeftOperand() {
-//        return this.leftOperand;
-//    }
-//    
-//    public Expresion getRightOperand() {
-//        return this.rightOperand;
-//    }
-
+    public String toString() {
+        return "(" + leftOperand.toString() + operador() + rightOperand.toString() + ")";
+    }
 }

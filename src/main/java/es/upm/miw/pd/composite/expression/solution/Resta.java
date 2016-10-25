@@ -12,7 +12,7 @@ public class Resta extends CompositeOperacion {
     }
 
     @Override
-    public String toString() {
-        return "(" + leftOperand.toString() + "-" + rightOperand.toString() + ")";
+    public char operador() {
+        return '-';
     }
 }
