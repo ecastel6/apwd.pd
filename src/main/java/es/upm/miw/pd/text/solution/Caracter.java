@@ -10,11 +10,11 @@ public class Caracter extends Componente {
     @Override
     public void add(Componente h) {
     }
-    
+
     @Override
     public void remove(Componente component) {
     }
-    
+
     @Override
     public String dibujar(boolean capitalize) {
         if (capitalize) {
@@ -28,7 +28,5 @@ public class Caracter extends Componente {
     public boolean isComposite() {
         return false;
     }
-
-   
 
 }

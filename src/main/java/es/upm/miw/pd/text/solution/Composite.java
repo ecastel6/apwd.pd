@@ -18,12 +18,12 @@ public abstract class Composite extends Componente {
 
     @Override
     public String dibujar(boolean capitalize) {
-        String printedText="";
-        
-        for (Componente component: textComponents) {
-            printedText+=component.dibujar(capitalize);
+        String printedText = "";
+
+        for (Componente component : textComponents) {
+            printedText += component.dibujar(capitalize);
         }
-        printedText+=printEOL();
+        printedText += printEOL();
         return printedText;
 
     }

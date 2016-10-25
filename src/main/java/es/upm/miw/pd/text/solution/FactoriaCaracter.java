@@ -22,11 +22,9 @@ public class FactoriaCaracter {
     public Caracter get(char key) {
         if (mapCharacters.containsKey(key)) {
             return mapCharacters.get(key);
-        }
-        else 
-        {
+        } else {
             Caracter newCar = new Caracter(key);
-            mapCharacters.put(key,newCar);
+            mapCharacters.put(key, newCar);
             return newCar;
         }
     }

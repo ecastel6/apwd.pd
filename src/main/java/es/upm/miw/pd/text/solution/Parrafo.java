@@ -6,9 +6,7 @@ public class Parrafo extends Composite {
     public void add(Componente component) {
         if (component.isComposite()) {
             throw new UnsupportedOperationException();
-        } 
-        else
-        {
+        } else {
             this.getTextComponents().add(component);
         }
     }
